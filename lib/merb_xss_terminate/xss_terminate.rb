@@ -7,7 +7,7 @@ module XssTerminate
 
   module ClassMethods
     def xss_terminate(options = {})
-      before_save :sanitize_fields
+      before :save, :sanitize_fields
 
       write_inheritable_attribute(:xss_terminate_options, {
         :disable => (options[:disable] || false),

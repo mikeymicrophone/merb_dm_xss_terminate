@@ -7,6 +7,8 @@ TODO: here's the game plan for the switcheroo.  message me if anything is missin
 2. replace use of #constantize with Module.const_get if necessary (merbtasks.rb line 8)
 3. see if dm properties will respond to #type and #name as in XssTerminate::InstanceMethods.sanitize_fields (xss_terminate.rb lines 29 & 31)
 4. replace ar method before_save with dm before :save in XssTerminate::ClassMethods.xss_terminate (xss_terminate.rb line 10)
+5. include in DataMapper::Resource instead of ActiveRecord::Base (merb_xss_terminate.rb line 7)
+6. make it possible to remove style tags from the whitelist (after I figure out if they are allowed now) (sanitizer.rb line 75)
 
 = merb_xss_terminate
 
