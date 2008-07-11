@@ -2,6 +2,6 @@
 class Person
   include DataMapper::Resource
   property :name, String
-  has_many :entries
+  has n, :entries
   xss_terminate :except => [:name]
 end
