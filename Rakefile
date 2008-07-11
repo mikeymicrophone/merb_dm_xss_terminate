@@ -6,13 +6,13 @@ require 'merb-core/test/tasks/spectasks'
 require 'date'
 require 'merb_rake_helper'
 
-PLUGIN = "merb_xss_terminate"
-NAME = "merb_xss_terminate"
+PLUGIN = "merb_dm_xss_terminate"
+NAME = "merb_dm_xss_terminate"
 GEM_VERSION = "0.0.1"
-AUTHOR = "Ben Chiu"
-EMAIL = "bchiu@yahoo.com"
-HOMEPAGE = "http://github.com/bchiu/merb_xss_terminate"
-SUMMARY = "Plugin that auto-sanitizes data before it is saved in your ActiveRecord models"
+AUTHOR = "Mike Schwab"
+EMAIL = "mike.schwab@gmail.com"
+HOMEPAGE = "http://github.com/schwabsauce/merb_xss_terminate"
+SUMMARY = "Plugin that auto-sanitizes data before it is saved in your DataMapper models"
 
 spec = Gem::Specification.new do |s|
   s.name = NAME
