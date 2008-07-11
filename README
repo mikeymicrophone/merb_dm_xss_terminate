@@ -1,5 +1,13 @@
 this fork is for the purpose of hooking into DataMapper::Resource instead of ActiveRecord::Base.  this transition has not been done yet (as of July 11, new phone day).
 
+TODO: here's the game plan for the switcheroo.  message me if anything is missing.
+
+1. convert test models to dm
+1.5 change specs
+2. replace use of #constantize with Module.const_get if necessary (merbtasks.rb line 8)
+3. see if dm properties will respond to #type and #name as in XssTerminate::InstanceMethods.sanitize_fields (xss_terminate.rb lines 29 & 31)
+4. replace ar method before_save with dm before :save in XssTerminate::ClassMethods.xss_terminate (xss_terminate.rb line 10)
+
 = merb_xss_terminate
 
   Plugin that auto-sanitizes data before it is saved in your DataMapper models.
