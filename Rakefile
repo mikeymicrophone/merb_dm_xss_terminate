@@ -8,7 +8,7 @@ require 'merb_rake_helper'
 
 PLUGIN = "merb_dm_xss_terminate"
 NAME = "merb_dm_xss_terminate"
-GEM_VERSION = "0.0.1"
+GEM_VERSION = "0.5.3"
 AUTHOR = "Mike Schwab"
 EMAIL = "mike.schwab@gmail.com"
 HOMEPAGE = "http://github.com/schwabsauce/merb_xss_terminate"

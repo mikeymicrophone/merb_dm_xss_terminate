@@ -5,7 +5,7 @@ namespace :merb_xss_terminate do
     task :sanitize => :environment do
       models = ENV['MODELS'].split(',')
       models.each do |model|
-        model.constantize.find(:all).map(&:save)
+        Module.const_get(model).send(:all).map { |record| record.save }
       end
     end
   end

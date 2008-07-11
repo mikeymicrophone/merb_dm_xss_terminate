@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = %q{merb_dm_xss_terminate}
-  s.version = "0.0.1"
+  s.version = "0.5.3"
 
   s.specification_version = 2 if s.respond_to? :specification_version=
 
@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.description = %q{Plugin that auto-sanitizes data before it is saved in your DataMapper models}
   s.email = %q{mike.schwab@gmail.com}
   s.extra_rdoc_files = ["README", "LICENSE", "TODO"]
-  s.files = ["LICENSE", "README", "Rakefile", "TODO", "lib/merb_xss_terminate", "lib/merb_xss_terminate/html", "lib/merb_xss_terminate/html/document.rb", "lib/merb_xss_terminate/html/node.rb", "lib/merb_xss_terminate/html/sanitizer.rb", "lib/merb_xss_terminate/html/selector.rb", "lib/merb_xss_terminate/html/tokenizer.rb", "lib/merb_xss_terminate/html/version.rb", "lib/merb_xss_terminate/html5lib_sanitize.rb", "lib/merb_xss_terminate/merbtasks.rb", "lib/merb_xss_terminate/rails_sanitize.rb", "lib/merb_xss_terminate/xss_terminate.rb", "lib/merb_xss_terminate.rb", "spec/config", "spec/config/database.yml", "spec/merb_xss_terminate_spec.rb", "spec/models", "spec/models/comment.rb", "spec/models/entry.rb", "spec/models/message.rb", "spec/models/person.rb", "spec/models/review.rb", "spec/schema.rb", "spec/spec_helper.rb"]
+  s.files = ["LICENSE", "README", "Rakefile", "TODO", "lib/merb_dm_xss_terminate", "lib/merb_dm_xss_terminate/html", "lib/merb_dm_xss_terminate/html/document.rb", "lib/merb_dm_xss_terminate/html/node.rb", "lib/merb_dm_xss_terminate/html/sanitizer.rb", "lib/merb_dm_xss_terminate/html/selector.rb", "lib/merb_dm_xss_terminate/html/tokenizer.rb", "lib/merb_dm_xss_terminate/html/version.rb", "lib/merb_dm_xss_terminate/html5lib_sanitize.rb", "lib/merb_dm_xss_terminate/merbtasks.rb", "lib/merb_dm_xss_terminate/rails_sanitize.rb", "lib/merb_dm_xss_terminate/xss_terminate.rb", "lib/merb_dm_xss_terminate.rb", "spec/config", "spec/config/database.yml", "spec/merb_dm_xss_terminate_spec.rb", "spec/models", "spec/models/comment.rb", "spec/models/entry.rb", "spec/models/message.rb", "spec/models/person.rb", "spec/models/review.rb", "spec/schema.rb", "spec/spec_helper.rb"]
   s.has_rdoc = true
   s.homepage = %q{http://github.com/schwabsauce/merb_xss_terminate}
   s.require_paths = ["lib"]

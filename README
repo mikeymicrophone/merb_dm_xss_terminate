@@ -2,16 +2,17 @@ this fork is for the purpose of hooking into DataMapper::Resource instead of Act
 
 TODO: here's the game plan for the switcheroo.  message me if anything is missing.
 
-1. convert test models to dm
+1. convert test models to DataMapper
 1.5 change specs
 2. replace use of #constantize with Module.const_get if necessary (merbtasks.rb line 8)
 3. see if dm properties will respond to #type and #name as in XssTerminate::InstanceMethods.sanitize_fields (xss_terminate.rb lines 29 & 31)
-4. alter module XssTerminate so that it can be included in a module instead of a class
-4. replace before_save with before :save in XssTerminate::ClassMethods.xss_terminate (xss_terminate.rb line 10)
-5. include in DataMapper::Resource instead of ActiveRecord::Base (merb_xss_terminate.rb line 7)
-6. make it possible to remove style tags from the whitelist (after I figure out if they are allowed now) (sanitizer.rb line 75)
-7. name the gem merb_dm_xss_terminate so both this and the ar version can be installed
-8. consider renaming other instances of merb_xss_terminate to merb_dm_xss_terminate to avoid confusion for users
+4. use append_inclusions instead of include as DataMapper::Resource is a module whereas ActiveRecord::Base is a class
+5. replace before_save with before :save in XssTerminate::ClassMethods.xss_terminate (xss_terminate.rb line 10)
+6. include in DataMapper::Resource instead of ActiveRecord::Base (merb_xss_terminate.rb line 7)
+7. make it possible to remove style tags from the whitelist (after I figure out if they are allowed now) (sanitizer.rb line 75)
+8. name the gem merb_dm_xss_terminate so both this and the ar version can be installed
+9. consider renaming other instances of merb_xss_terminate to merb_dm_xss_terminate to avoid confusion for users
+10. figure out if ENV['MODELS'] is also used by DataMapper
 
 = merb_xss_terminate
 

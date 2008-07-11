@@ -17,9 +17,10 @@ module XssTerminate
       })
 
       class_inheritable_reader :xss_terminate_options
-      
+
       include XssTerminate::InstanceMethods
     end
+
   end
   
   module InstanceMethods
@@ -43,4 +44,7 @@ module XssTerminate
       end
     end
   end
+  
+  DataMapper::Resource.append_inclusions XssTerminate
+  DataMapper::Model.append_extensions XssTerminate::ClassMethods
 end
