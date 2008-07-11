@@ -1,6 +1,15 @@
 require File.dirname(__FILE__) + '/spec_helper'
 
 describe "merb_xss_terminate" do
+  
+  before do
+    DataMapper.setup(:default, 'mysql://localhost/merb_xss_terminate_test')
+    Comment.auto_migrate!
+    Entry.auto_migrate!
+    Message.auto_migrate!
+    Person.auto_migrate!
+    Review.auto_migrate!
+  end
 
   it "should do nothing" do
     true.should == true

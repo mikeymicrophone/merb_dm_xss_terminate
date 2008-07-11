@@ -1,7 +1,14 @@
 ---
-:test:
-  :adapter: mysql
-  :database: merb_xss_terminate_test
-  :host: 127.0.0.1
-  :username: 
-  :password: 
+development: &defaults
+  adapter: mysql
+  database: merb_xss_terminate_test
+  host: localhost
+  username: root
+  password:
+
+test:
+  adapter: mysql
+  database: merb_xss_terminate_test
+  host: 127.0.0.1
+  username: root
+  password: 

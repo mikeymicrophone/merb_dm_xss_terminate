@@ -1,6 +1,6 @@
 module XssTerminate
   def self.included(base)
-    base.extend(ClassMethods)
+    base.extend(ClassMethods::ModelMethods)
     # sets up default of stripping tags for all fields
     # base.send(:xss_terminate)
   end
@@ -10,22 +10,23 @@ module XssTerminate
       def xss_terminate(options = {})
         before :save, :sanitize_fields
 
-        write_inheritable_attribute(:xss_terminate_options, {
-          :disable => (options[:disable] || false),
-          :except => (options[:except] || []),
-          :html5lib_sanitize => (options[:html5lib_sanitize] || []),
-          :sanitize => (options[:sanitize] || [])
-        })
-
-        class_inheritable_reader :xss_terminate_options
+        # write_inheritable_attribute(:xss_terminate_options, {
+        #   :disable => (options[:disable] || false),
+        #   :except => (options[:except] || []),
+        #   :html5lib_sanitize => (options[:html5lib_sanitize] || []),
+        #   :sanitize => (options[:sanitize] || [])
+        # })
+        # 
+        # class_inheritable_reader :xss_terminate_options
 
         include XssTerminate::InstanceMethods
       end
     end
-    def self.included(base)
-      base.extend ModelMethods
-      base.send(:xss_terminate)
-    end
+    # 
+    # def self.extended(base)
+    #   base.extend(ModelMethods)
+    #   base.send(:xss_terminate)  
+    # end
   end
   
   module InstanceMethods
@@ -50,6 +51,6 @@ module XssTerminate
     end
   end
   
-  DataMapper::Resource.append_inclusions XssTerminate
-  DataMapper::Model.append_extensions XssTerminate::ClassMethods
+  # DataMapper::Resource.append_inclusions XssTerminate
+  # DataMapper::Model.append_extensions XssTerminate::ClassMethods
 end

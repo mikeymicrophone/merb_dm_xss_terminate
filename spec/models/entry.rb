@@ -1,6 +1,8 @@
 # Rails HTML sanitization on some fields
 class Entry
   include DataMapper::Resource
+  include XssTerminate
+  property :id, Integer, :serial => true
   property :title, String
   property :body, Text
   property :extended, Text
