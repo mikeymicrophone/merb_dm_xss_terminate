@@ -1,6 +1,8 @@
+this fork is for the purpose of hooking into DataMapper::Resource instead of ActiveRecord::Base.  this transition has not been done yet (as of July 11, new phone day).
+
 = merb_xss_terminate
 
-  Plugin that auto-sanitizes data before it is saved in your ActiveRecord models.
+  Plugin that auto-sanitizes data before it is saved in your DataMapper models.
   
   merb_xss_terminate is a port of xss_terminate from Luke Francl. The white list
   sanitizer and full sanitizer were lifted from Rails so you wouldn't have to 
@@ -18,7 +20,7 @@
 
 == Installation
 
-  git clone git://github.com/bchiu/merb_xss_terminate.git
+  git clone git://github.com/schwabsauce/merb_xss_terminate.git
   cd merb_xss_terminate
   rake install
   add: dependency 'merb_xss_terminate' to init.rb
