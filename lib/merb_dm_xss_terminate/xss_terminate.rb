@@ -32,7 +32,7 @@ module XssTerminate
   module InstanceMethods
         
     def sanitize_fields
-      self.class.columns.each do |column|
+      self.class.properties.each do |column|
         next unless (column.type == :string || column.type == :text)
         
         field = column.name.to_sym

@@ -19,3 +19,12 @@ require File.join(File.dirname(__FILE__), 'models/entry')
 require File.join(File.dirname(__FILE__), 'models/comment')
 require File.join(File.dirname(__FILE__), 'models/message')
 require File.join(File.dirname(__FILE__), 'models/review')
+
+def xss_terminate_options
+  {
+    :disable => (options[:disable] || false),
+    :except => (options[:except] || []),
+    :html5lib_sanitize => (options[:html5lib_sanitize] || []),
+    :sanitize => (options[:sanitize] || [])
+  }
+end
