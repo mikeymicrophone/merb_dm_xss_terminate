@@ -1,27 +1,27 @@
 module XssTerminate
   def self.included(base)
-    base.extend(ClassMethods::ModelMethods)
+    base.extend(ClassMethods)#::ModelMethods)
     # sets up default of stripping tags for all fields
     # base.send(:xss_terminate)
   end
 
   module ClassMethods
-    module ModelMethods
+    # module ModelMethods
       def xss_terminate(options = {})
         before :save, :sanitize_fields
 
-        # write_inheritable_attribute(:xss_terminate_options, {
-        #   :disable => (options[:disable] || false),
-        #   :except => (options[:except] || []),
-        #   :html5lib_sanitize => (options[:html5lib_sanitize] || []),
-        #   :sanitize => (options[:sanitize] || [])
-        # })
-        # 
-        # class_inheritable_reader :xss_terminate_options
+        write_inheritable_attribute(:xss_terminate_options, {
+          :disable => (options[:disable] || false),
+          :except => (options[:except] || []),
+          :html5lib_sanitize => (options[:html5lib_sanitize] || []),
+          :sanitize => (options[:sanitize] || [])
+        })
+        
+        class_inheritable_reader :xss_terminate_options
 
         include XssTerminate::InstanceMethods
       end
-    end
+    # end
     # 
     # def self.extended(base)
     #   base.extend(ModelMethods)
@@ -50,7 +50,7 @@ module XssTerminate
       end
     end
   end
-  
-  # DataMapper::Resource.append_inclusions XssTerminate
-  # DataMapper::Model.append_extensions XssTerminate::ClassMethods
 end
+
+#you can either mix-into DataMapper::Model if the behavior is global to every single Model (Resource class), or if it needs to be mixed into each model separately, you can use DataMapper::Model.append_extensions XssTerminate::ClassMethods::ModelMethods
+#dkubb: schwabsauce: how append_extensions works is when the class includes DataMapper::Resource, whatever is queued up with append_extensions will extend the class' methods

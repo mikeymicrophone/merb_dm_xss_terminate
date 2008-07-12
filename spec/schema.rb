@@ -1,6 +1,11 @@
 # DataMapper can migrate the schema from the property declarations in the models
 # this is being left here for reference only
-
+DataMapper.setup(:default, 'mysql://localhost/merb_xss_terminate_test')
+Comment.auto_migrate!
+Entry.auto_migrate!
+Message.auto_migrate!
+Person.auto_migrate!
+Review.auto_migrate!
 # ActiveRecord::Schema.define(:version => 0) do
 #   create_table :people, :force => true do |t|
 #     t.column :name, :string
