@@ -26,7 +26,7 @@ module XssTerminate
         
     def sanitize_fields
       self.class.properties.each do |column|
-        next unless (column.type == String || column.type == DataMapper::Types::Text)
+        next unless (column.type == String || column.type == DataMapper::Types::Text || (column.type.respond_to?(:primitive) && column.type.primitive == String))
         
         field = column.name.to_sym
         value = self.send field
@@ -44,6 +44,3 @@ module XssTerminate
     end
   end
 end
-
-#you can either mix-into DataMapper::Model if the behavior is global to every single Model (Resource class), or if it needs to be mixed into each model separately, you can use DataMapper::Model.append_extensions XssTerminate::ClassMethods::ModelMethods
-#dkubb: schwabsauce: how append_extensions works is when the class includes DataMapper::Resource, whatever is queued up with append_extensions will extend the class' methods

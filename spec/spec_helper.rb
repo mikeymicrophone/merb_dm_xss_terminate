@@ -2,7 +2,7 @@ $TESTING=true
 $:.push File.join(File.dirname(__FILE__), '..', 'lib')
 
 require 'rubygems'
-require 'merb-core'#gem 'merb-core', '= 0.9.3'
+require 'merb-core'
 require 'merb-core/test'
 require 'dm-core'
 require 'merb_dm_xss_terminate'
@@ -18,12 +18,3 @@ require File.join(File.dirname(__FILE__), 'models/review')
 
 # load test schema
 load(File.dirname(__FILE__) + "/schema.rb")
-
-# def xss_terminate_options options = {}
-#   {
-#     :disable => (options[:disable] || false),
-#     :except => (options[:except] || []),
-#     :html5lib_sanitize => (options[:html5lib_sanitize] || []),
-#     :sanitize => (options[:sanitize] || [])
-#   }
-# end

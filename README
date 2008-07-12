@@ -1,19 +1,19 @@
-this fork is for the purpose of hooking into DataMapper::Resource instead of ActiveRecord::Base.  this transition has not been done yet (as of July 11, new phone day).
+this fork is for the purpose of hooking into DataMapper::Resource instead of ActiveRecord::Base.
 
 TODO: here's the game plan for the switcheroo.  message me if anything is missing.
 
-1. convert test models to DataMapper
-1.5 change specs
-2. replace use of #constantize with Module.const_get if necessary (merbtasks.rb line 8)
-3. see if dm properties will respond to #type and #name as in XssTerminate::InstanceMethods.sanitize_fields (xss_terminate.rb lines 29 & 31)
-4. use append_inclusions instead of include as DataMapper::Resource is a module whereas ActiveRecord::Base is a class
-5. replace before_save with before :save in XssTerminate::ClassMethods.xss_terminate (xss_terminate.rb line 10)
-6. include in DataMapper::Resource instead of ActiveRecord::Base (merb_xss_terminate.rb line 7)
-7. adjust use of write_inheritable_attribute in xss_terminate.rb line 12 because DataMapper::Model is a module
+1. convert test models to DataMapper [done]
+1.5 change specs [wasn't necessary]
+2. replace use of #constantize with Module.const_get if necessary (merbtasks.rb line 8) [done]
+3. see if dm properties will respond to #type and #name as in XssTerminate::InstanceMethods.sanitize_fields (xss_terminate.rb lines 29 & 31) [done]
+4. use append_inclusions instead of include as DataMapper::Resource is a module whereas ActiveRecord::Base is a class [done]
+5. replace before_save with before :save in XssTerminate::ClassMethods.xss_terminate (xss_terminate.rb line 10) [done]
+6. include in DataMapper::Resource instead of ActiveRecord::Base (merb_xss_terminate.rb line 7) [done]
 7. make it possible to remove style tags from the whitelist (after I figure out if they are allowed now) (sanitizer.rb line 75)
-8. name the gem merb_dm_xss_terminate so both this and the ar version can be installed
-9. consider renaming other instances of merb_xss_terminate to merb_dm_xss_terminate to avoid confusion for users
+8. name the gem merb_dm_xss_terminate so both this and the ar version can be installed [done]
+9. consider renaming other instances of merb_xss_terminate to merb_dm_xss_terminate to avoid confusion for users [done except for git repo]
 10. figure out if ENV['MODELS'] is also used by DataMapper
+11. why do the specs pass when they are directly assigning foreign keys (DataMapper usually complains unless you assign objects to proxies, it doesn't let me assign integers to foreign keys (i.e. message belongs_to :person, message.person = nick works but message.person_id = 2 usually says person_id is not a public property))
 
 = merb_xss_terminate
 
