@@ -14,24 +14,24 @@ TODO: here's the game plan for the switcheroo.  message me if anything is missin
 9. consider renaming other instances of merb_xss_terminate to merb_dm_xss_terminate to avoid confusion for users [done except for git repo]
 10. figure out if ENV['MODELS'] is also used by DataMapper
 11. why do the specs pass when they are directly assigning foreign keys (DataMapper usually complains unless you assign objects to proxies, it doesn't let me assign integers to foreign keys (i.e. message belongs_to :person, message.person = nick works but message.person_id = 2 usually says person_id is not a public property))
+12. write a spec that checks if my handling of custom string types was correct
 
-= merb_xss_terminate
+= merb_dm_xss_terminate
 
   Plugin that auto-sanitizes data before it is saved in your DataMapper models.
   
-  merb_xss_terminate is a port of xss_terminate from Luke Francl. The white list
-  sanitizer and full sanitizer were lifted from Rails so you wouldn't have to 
-  install ActionPack :)
+  merb_dm_xss_terminate is a port of merb_xss_terminate by Ben Chiu, which is
+  a port of xss_terminate from Luke Francl. The white list sanitizer and full
+  sanitizer were lifted from Rails so you don't have to install ActionPack
 
-  merb_xss_terminate makes stripping and sanitizing HTML stupid-simple. Install 
-  and forget. And forget about forgetting to escape your output, because you 
+  merb_dm_xss_terminate makes stripping and sanitizing HTML automatic. Install 
+  and forget. And forget about remembering to escape your output, because you 
   won't need to anymore.
 
-  But merb_xss_terminate is also flexible. By default, it will strip all HTML 
-  tags from user input. This is usually what you want, but sometimes you need 
-  users to be able to enter HTML. The plugin allows you remove bad HTML with 
-  your choice of two whitelist-based sanitizers, or to skip HTML sanitization 
-  entirely on a per-field basis.
+  But merb_dm_xss_terminate is also flexible. *By default, it will strip all HTML 
+  tags from user input.* When you need users to be able to enter HTML, the plugin
+  allows you remove bad HTML with your choice of two whitelist-based sanitizers, 
+  or to skip HTML sanitization entirely on a per-field basis.
 
 == Installation
 
@@ -54,36 +54,35 @@ TODO: here's the game plan for the switcheroo.  message me if anything is missin
 
 == Usage
 
-  Installing the plugin creates a +before_save+ hook that will strip HTML tags 
+  Installing the plugin creates a +before :save+ hook that will strip HTML tags 
   from all string and text fields. No further configuration is necessary if this
   is what you want. To customize the behavior, you use the xss_terminate 
   class method in your models.
   
   To exempt some fields from sanitization, use the <tt>:except</tt> option 
-  with a list of fields not to process. Note: Merb uses :exclude but ActiveRecord
-  uses :except (so use :except here).
+  with a list of fields not to process. Note: Merb uses :exclude but use :except here.
   
-    class Comment < ActiveRecord::Base
+    class Comment
       xss_terminate :except => [ :body ]
     end
   
   To sanitize HTML with Rails' sanitization, use the <tt>:sanitize</tt> option:
   
-    class Review < ActiveRecord::Base
-      xss_sanitize :sanitize => [ :body, :author_name]
+    class Review
+      xss_terminate :sanitize => [ :body, :author_name]
     end
 
   To sanitize HTML with {HTML5Lib}[http://code.google.com/p/html5lib/] 
   use the <tt>:html5lib_sanitize</tt> option with a list of fields to sanitize:
 
-    class Entry < ActiveRecord::Base
+    class Entry
       xss_terminate :html5lib_sanitize => [ :body, :author_name ]
     end
    
   You can combine multiple options if you have some fields you would like skipped
   and others sanitized. Fields not listed in the option arrays will be stripped.
   
-    class Message < ActiveRecord::Base
+    class Message
       xss_terminate :except => [ :body ], :sanitize => [ :title ]
     end
 
@@ -95,6 +94,8 @@ TODO: here's the game plan for the switcheroo.  message me if anything is missin
   again to invoke the before_save hook.
 
 == Credits
+
+  merb_xss_terminate by {Ben Chiu}
 
   xss_terminate by {Luke Francl}[http://railspikes.com] and acts_as_sanitized by 
   {Alex Payne}[http://www.al3x.net].
