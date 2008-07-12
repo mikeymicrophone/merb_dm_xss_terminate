@@ -1,11 +1,4 @@
 ---
-development: &defaults
-  adapter: mysql
-  database: merb_xss_terminate_test
-  host: localhost
-  username: root
-  password:
-
 test:
   adapter: mysql
   database: merb_xss_terminate_test

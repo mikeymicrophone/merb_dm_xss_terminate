@@ -2,7 +2,7 @@ $TESTING=true
 $:.push File.join(File.dirname(__FILE__), '..', 'lib')
 
 require 'rubygems'
-gem 'merb-core', '= 0.9.3'
+require 'merb-core'#gem 'merb-core', '= 0.9.3'
 require 'merb-core/test'
 require 'dm-core'
 require 'merb_dm_xss_terminate'

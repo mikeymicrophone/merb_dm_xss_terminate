@@ -5,7 +5,7 @@ if defined?(Merb::Plugins)
 
   Merb::BootLoader.before_app_loads do
     DataMapper::Resource.append_inclusions XssTerminate
-    DataMapper::Model.append_extensions XssTerminate::ClassMethods#::ModelMethods
+    DataMapper::Model.append_extensions XssTerminate::ClassMethods
   end
 
   Merb::Plugins.add_rakefiles "merb_dm_xss_terminate/merbtasks"
