@@ -9,14 +9,15 @@ module XssTerminate
     def xss_terminate(options = {})
       before :save, :sanitize_fields
 
+      class_inheritable_writer :xss_terminate_options
+      class_inheritable_reader :xss_terminate_options
+
       self.xss_terminate_options = {
         :disable => (options[:disable] || false),
         :except => (options[:except] || []),
         :html5lib_sanitize => (options[:html5lib_sanitize] || []),
         :sanitize => (options[:sanitize] || [])
       }
-      
-      class_inheritable_reader :xss_terminate_options
 
       include XssTerminate::InstanceMethods
     end

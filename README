@@ -1,11 +1,6 @@
 this fork is for the purpose of hooking into DataMapper::Resource instead of ActiveRecord::Base.
-It seems mostly ready although I can't yet be sure.  Please share your experience, whether it
-works with your app or not.
 
-In my case, the current sticking point is, I believe, when xss_terminate_options= is called.
-It is supposed to be an inheritable attribute that stores the default sanitization options.
-
-- add more specs
+I would like to add more specs, including:
 -- if handling of custom string types is correct
 what's the dm equivalent of ENV['MODELS']? (in rake task)
 why do the specs pass when they are directly assigning foreign keys (DataMapper usually complains unless you assign objects to proxies, it doesn't let me assign integers to foreign keys (i.e. message belongs_to :person, message.person = nick works but message.person_id = 2 usually says person_id is not a public property))
