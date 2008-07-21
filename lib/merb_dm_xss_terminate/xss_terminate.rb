@@ -27,7 +27,7 @@ module XssTerminate
         
     def sanitize_fields
       self.class.properties.each do |column|
-        next unless (column.type == String || column.type == DataMapper::Types::Text || (column.type.respond_to?(:primitive) && column.type.primitive == String))
+        next unless (column.type == String || (column.type.respond_to?(:primitive) && column.type.primitive == String))
         
         field = column.name.to_sym
         value = self.send field

@@ -1,9 +1,6 @@
 this fork is for the purpose of hooking into DataMapper::Resource instead of ActiveRecord::Base.
 
-I would like to add more specs, including:
--- if handling of custom string types is correct
-what's the dm equivalent of ENV['MODELS']? (in rake task)
-why do the specs pass when they are directly assigning foreign keys (DataMapper usually complains unless you assign objects to proxies, it doesn't let me assign integers to foreign keys (i.e. message belongs_to :person, message.person = nick works but message.person_id = 2 usually says person_id is not a public property))
+what's the merb/dm equivalent of ENV['MODELS']? (in rake task). apart from that I think the port is complete.
 
 = merb_dm_xss_terminate
 

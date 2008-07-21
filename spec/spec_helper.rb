@@ -15,6 +15,7 @@ require File.join(File.dirname(__FILE__), 'models/entry')
 require File.join(File.dirname(__FILE__), 'models/comment')
 require File.join(File.dirname(__FILE__), 'models/message')
 require File.join(File.dirname(__FILE__), 'models/review')
+require File.join(File.dirname(__FILE__), 'models/page')
 
 # load test schema
 load(File.dirname(__FILE__) + "/schema.rb")

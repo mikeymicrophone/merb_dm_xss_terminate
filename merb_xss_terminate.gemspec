@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = %q{merb_dm_xss_terminate}
-  s.version = "0.5.3"
+  s.version = "0.6.0"
 
   s.specification_version = 2 if s.respond_to? :specification_version=
 

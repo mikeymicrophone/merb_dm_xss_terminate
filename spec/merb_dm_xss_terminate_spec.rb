@@ -43,4 +43,12 @@ describe "merb_xss_terminate" do
     r.body.should == "&lt;script&gt;alert('xss in body')&lt;/script&gt;"
     r.extended.should == "&lt;script&gt;alert('xss in extended')&lt;/script&gt;"
   end
+  
+  it "should strip tags from one field and sanitize another" do
+    p = Page.create!(:title => "<title>Helpless, helpless helpless</title>",
+                     :contents => "<script>bad_move()</script><b>oh look out</b>")
+                     
+    p.title.should == 'Helpless, helpless helpless'
+    p.contents.should == '<b>oh look out</b>'
+  end
 end
